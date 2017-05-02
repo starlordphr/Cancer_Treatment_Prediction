@@ -43,6 +43,7 @@ Breast Cancer:
 20. ABCG2
 21. TPI1
 22. NDRG1
+23. BRCA2
 
 Colorectal Cancer:
 1. CDH17
