@@ -1,33 +1,33 @@
 Common Cancer Genes:
-1. HSP90
-2. IDO
-3. DNA
-4. BCL-XL
-5. BCL-2
-6. CDK
-7. TGFB(Beta)2
+1. HSP90 [x]
+2. IDO [x]
+3. DNA [x]
+4. BCL-XL [x]
+5. BCL2
+6. CDK [x]
+7. TGFB2
 8. PARP1
-9. VEGF
-10. PI3K
-11. COX2
+9. VEGF [x]
+10. PI3K [x]
+11. COX2 [x]
 12. EGFR
-13. hTERT
-14. BCR-ABL
-15. PDGFR
+13. hTERT [x]
+14. BCR-ABL [c]
+15. PDGFR [x]
 16. DHFR
-17. Chk1
+17. Chk1 [x]
 18. mTOR
-19. RAR
+19. RAR [x]
 20. ERBB2
 
 Breast Cancer:
 1. BRCA1
-2. CDH1
-3. NHERF1
+2. CDH1 [x]
+3. NHERF1 [x]
 4. PTEN
-5. HER2
+5. HER2 [x]
 6. TGM2
-7. PHD2
+7. PHD2 [x]
 8. PGK1
 9. FOXO3
 10. EDN1
@@ -38,7 +38,7 @@ Breast Cancer:
 15. ENO1
 16. MMP2
 17. VHL
-18. VEGF
+18. VEGF [x]
 19. LDHA
 20. ABCG2
 21. TPI1
@@ -52,7 +52,7 @@ Colorectal Cancer:
 4. CXCR4
 5. CXCR7
 6. FABP1
-7. IL-8
+7. IL8
 8. MUC2
 9. PDCD4
 10. TGFB1
@@ -63,11 +63,11 @@ Esophagus Cancer:
 1. CTTN
 2. DMRT2
 3. MCM10
-4. SCYA26
+4. SCYA26 [x]
 5. HMGCS2
 6. SORBS2
 
-Lymphoma Cancer:
+Lymphoma Cancer: [x]
 1. TYMS
 2. MTR
 3. (NF)-KB
@@ -83,8 +83,8 @@ Lymphoma Cancer:
 13. CYP2E1
 14. EPHX1
 
-Pancreatic Cancer:
-1. S100P
+Pancreatic Cancer: [x]
+1. S100P [x]
 2. FN1
 3. AMY2A
 4. FSCN1
@@ -119,26 +119,26 @@ Pancreatic Cancer:
 33. TTR
 
 Bladder Cancer:
-1. HOX-AS-2
+1. HOX-AS-2 [x]
 2. HOTAIR
-3. HOTAIR M1
-4. LincRNA-p21
-5. T-UCR
+3. HOTAIR M1 [x]
+4. LincRNA-p21 [x]
+5. T-UCR [x]
 6. UCA1
-7. UCA1a
+7. UCA1a [x]
 8. H19
 9. NEAT1
-10. Linc-UBC1
+10. Linc-UBC1 [x]
 11. MALAT-1
 12. TUG1
-13. UNMIBC
+13. UNMIBC [x]
 14. PVT1
-15. ncRAN
-16. PCA-T
-17. GHET1
-18. SPRY4-IT1
+15. ncRAN [x]
+16. PCA-T [x]
+17. GHET1 [x]
+18. SPRY4-IT1 [x]
 19. MEG3
-20. GAS5
+20. GAS5 [x]
 
 Renal Carcinoma:
 1. AQP2
@@ -149,14 +149,14 @@ Renal Carcinoma:
 6. NDUFA4L2
 7. KNG1
 8. CLDN8
-9. CLCNK8
+9. CLCNK8 [x]
 10. CLCNKA
 11. KCNJ1
 12. KNG1
 13. TMEM213
 14. SLC26A7
 15. TNFAIP6
-16. HILPDA
+16. HILPDA [x]
 
 Skin Cancer:
 1. CST6
@@ -167,16 +167,16 @@ Skin Cancer:
 6. SPP1
 
 Testicular Cancer:
-1. MAGEA1
-2. GAGE
-3. SSX2
-4. NY-ESO-1
-5. MAGEC1
-6. SPANX
+1. MAGEA1 [x]
+2. GAGE [x]
+3. SSX2 [x]
+4. NY-ESO-1 [x]
+5. MAGEC1 [x]
+6. SPANX [x]
 7. ACTB
 
-Uterein Cancer:
-1. DLG7/DLGAP5
+Uterine Cancer:
+1. DLGAP5
 2. IHH
 3. MELK
 4. RORB
