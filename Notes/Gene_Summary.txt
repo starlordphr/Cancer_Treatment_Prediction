@@ -3,46 +3,46 @@ Common Cancer Genes:
 2. IDO [x]
 3. DNA [x]
 4. BCL-XL [x]
-5. BCL2
+5. BCL2 [x]
 6. CDK [x]
-7. TGFB2
-8. PARP1
+7. TGFB2 [x]
+8. PARP1 [x]
 9. VEGF [x]
 10. PI3K [x]
 11. COX2 [x]
 12. EGFR
 13. hTERT [x]
-14. BCR-ABL [c]
+14. BCR-ABL [x]
 15. PDGFR [x]
-16. DHFR
+16. DHFR [x]
 17. Chk1 [x]
-18. mTOR
+18. mTOR [x]
 19. RAR [x]
 20. ERBB2
 
 Breast Cancer:
 1. BRCA1
-2. CDH1 [x]
+2. CDH1
 3. NHERF1 [x]
 4. PTEN
 5. HER2 [x]
-6. TGM2
+6. TGM2 [x]
 7. PHD2 [x]
-8. PGK1
+8. PGK1 [x]
 9. FOXO3
-10. EDN1
-11. EPO
-12. MET
-13. ETS1
-14. VIM
-15. ENO1
-16. MMP2
-17. VHL
+10. EDN1 [x]
+11. EPO [x]
+12. MET [x]
+13. ETS1 [x]
+14. VIM [x]
+15. ENO1 [x]
+16. MMP2 [x]
+17. VHL [x]
 18. VEGF [x]
-19. LDHA
-20. ABCG2
-21. TPI1
-22. NDRG1
+19. LDHA [x]
+20. ABCG2 [x]
+21. TPI1 [x]
+22. NDRG1 [x]
 23. BRCA2
 
 Colorectal Cancer:
