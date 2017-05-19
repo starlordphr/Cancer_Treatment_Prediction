@@ -40,7 +40,8 @@ cancer_df = cancer_df[cancer_df.HER2_SNP6 != 'UNDEF']
 
 # convert textual data to numerical
 # YES = 1, NO = 0
-for therapy in ['CHEMOTHERAPY', 'HORMONE_THERAPY', 'RADIO_THERAPY']:
+therapies = ['CHEMOTHERAPY', 'HORMONE_THERAPY', 'RADIO_THERAPY']
+for therapy in therapies:
     cancer_df = convert_to_binary(cancer_df, therapy, 'YES')
 
 # pos = 1, neg = 0
@@ -56,3 +57,7 @@ cancer_df = convert_to_binary(cancer_df, 'BREAST_SURGERY', 'MASTECTOMY')
 categorical_data = ['VITAL_STATUS', 'CELLULARITY', 'HER2_SNP6', 'CLAUDIN_SUBTYPE']
 for cat in categorical_data:
     cancer_df = one_hot_encode(cancer_df, cat)
+
+# represent data and target labels in matrix form
+X = cancer_df.drop('PATIENT_ID', axis=1).drop(therapies, axis=1).as_matrix()
+Y = cancer_df[therapies].as_matrix()
