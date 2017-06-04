@@ -56,13 +56,16 @@ class Crawler(object):
         for cat in categorical_data:
             cancer_df = self.one_hot_encode(cancer_df, cat)
 
+        # remove points with absolutely no treatments
+        cancer_df = cancer_df[(cancer_df.CHEMOTHERAPY != 0) | (cancer_df.HORMONE_THERAPY != 0) | (cancer_df.RADIO_THERAPY != 0)]
+
         # represent data and target labels in matrix form
         X = cancer_df.drop('PATIENT_ID', axis=1).drop(therapies, axis=1).as_matrix()
         Y = cancer_df[therapies].as_matrix()
 
-        print "Input Shape: ",X.shape
-        print "Output Shape: ",Y.shape
+        # print "Input Shape: ",X.shape
+        # print "Output Shape: ",Y.shape
         data = np.concatenate((X, Y), axis=1)
-        print "Data Size: ", data.shape
+        # print "Data Size: ", data.shape
 
         return data
