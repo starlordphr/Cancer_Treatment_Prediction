@@ -13,13 +13,13 @@ if __name__ == "__main__":
 
     # Parameters
     learning_rate = 0.001
-    training_epochs = 25
+    training_epochs = 50
     batch_size = 50
     display_step = 1
 
     # Network Parameters
     n_hidden_1 = 5 # 1st layer number of features
-    n_hidden_2 = 3 # 2nd layer number of features
+    #n_hidden_2 = 8 # 2nd layer number of features
     n_input = 28 # MNIST data input (img shape: 28*28)
     n_treatments = 3 # MNIST total classes (0-9 digits)
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     def multilayer_perceptron(x, weights, biases):
         # Hidden layer with RELU activation
         layer_1 = tf.add(tf.matmul(x, weights['h1']), biases['b1'])
-        layer_1 = tf.nn.softmax(layer_1)
+        layer_1 = tf.nn.relu(layer_1)
         # Hidden layer with RELU activation
         #layer_2 = tf.add(tf.matmul(layer_1, weights['h2']), biases['b2'])
         #layer_2 = tf.nn.relu(layer_2)
@@ -79,54 +79,53 @@ if __name__ == "__main__":
         dataElements[10] = dataElements[10]/max10
         dataElements[11] = dataElements[11]/max11
 
-    k_fold = KFold(n_splits=7)
-    for train_indices, test_indices in k_fold.split(data):
-        print('Start: %s End: %s | Start: %s End: %s' % (train_indices[0], train_indices[-1], test_indices[0], test_indices[-1]))
-        trainInput = data[train_indices[0]:train_indices[-1]]
-        trainInput = trainInput[:, np.r_[0:28]]
-        trainOutput = data[train_indices[0]:train_indices[-1]]
-        trainOutput = trainOutput[:, np.r_[28:31]]
-        testInput = data[test_indices[0]:test_indices[-1]]
-        testInput = testInput[:, np.r_[0:28]]
-        testOutput = data[test_indices[0]:test_indices[-1]]
-        testOutput = testOutput[:, np.r_[28:31]]
 
-        train_size = len(trainInput)
+    trainInput = data[:, np.r_[0:28]]
+    trainOutput = data[:, np.r_[28:31]]
+    testInput = data[:, np.r_[0:28]]
+    testOutput = data[:, np.r_[28:31]]
 
-        # Construct model
-        pred = multilayer_perceptron(x, weights, biases)
+    '''print trainInput.shape
+    print trainOutput.shape
+    print testInput.shape
+    print testOutput.shape'''
 
-        # Define loss and optimizer
-        cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=pred, labels=y))
-        optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
+    train_size = len(trainInput)
 
-        # Initializing the variables
-        init = tf.global_variables_initializer()
+    # Construct model
+    pred = multilayer_perceptron(x, weights, biases)
 
-        # Launch the graph
-        with tf.Session() as sess:
-            sess.run(init)
+    # Define loss and optimizer
+    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=pred, labels=y))
+    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
 
-            # Training cycle
-            for epoch in range(training_epochs):
-                avg_cost = 0.
-                total_batch = int(train_size/batch_size)
-                # Loop over all batches
-                for i in range(total_batch):
-                    #batch_x, batch_y = mnist.train.next_batch(batch_size)
-                    # Run optimization op (backprop) and cost op (to get loss value)
-                    _, c = sess.run([optimizer, cost], feed_dict={x: trainInput,
-                                                                  y: trainOutput})
-                    # Compute average loss
-                    avg_cost += c / total_batch
-                # Display logs per epoch step
-                if epoch % display_step == 0:
-                    print("Epoch:", '%04d' % (epoch+1), "cost=", \
-                        "{:.9f}".format(avg_cost))
-            print("Optimization Finished!")
+    # Initializing the variables
+    init = tf.global_variables_initializer()
 
-            # Test model
-            correct_prediction = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))
-            # Calculate accuracy
-            accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
-            print("Accuracy:", accuracy.eval({x: testInput, y: testOutput}))
+    # Launch the graph
+    with tf.Session() as sess:
+        sess.run(init)
+
+        # Training cycle
+        for epoch in range(training_epochs):
+            avg_cost = 0.
+            total_batch = int(train_size/batch_size)
+            # Loop over all batches
+            for i in range(total_batch):
+                #batch_x, batch_y = mnist.train.next_batch(batch_size)
+                # Run optimization op (backprop) and cost op (to get loss value)
+                _, c = sess.run([optimizer, cost], feed_dict={x: trainInput,
+                                                              y: trainOutput})
+                # Compute average loss
+                avg_cost += c / total_batch
+            # Display logs per epoch step
+            if epoch % display_step == 0:
+                print("Epoch:", '%04d' % (epoch+1), "cost=", \
+                    "{:.9f}".format(avg_cost))
+        print("Optimization Finished!")
+
+        # Test model
+        correct_prediction = tf.equal(tf.argmax(pred, 1), tf.argmax(y, 1))
+        # Calculate accuracy
+        accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
+        print("Accuracy:", accuracy.eval({x: testInput, y: testOutput}))
