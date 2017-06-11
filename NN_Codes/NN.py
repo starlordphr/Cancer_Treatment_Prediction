@@ -9,17 +9,21 @@ import sys
 import numpy as np
 import pandas as pd
 
+TEST_SIZE = 200
+FEATURES = 28
+OUTPUTS = 3
+
 if __name__ == "__main__":
 
     # Parameters
     learning_rate = 0.001
-    training_epochs = 50
+    training_epochs = 20
     batch_size = 50
     display_step = 1
 
     # Network Parameters
     n_hidden_1 = 5 # 1st layer number of features
-    #n_hidden_2 = 8 # 2nd layer number of features
+    n_hidden_2 = 3 # 2nd layer number of features
     n_input = 28 # MNIST data input (img shape: 28*28)
     n_treatments = 3 # MNIST total classes (0-9 digits)
 
@@ -31,7 +35,7 @@ if __name__ == "__main__":
     def multilayer_perceptron(x, weights, biases):
         # Hidden layer with RELU activation
         layer_1 = tf.add(tf.matmul(x, weights['h1']), biases['b1'])
-        layer_1 = tf.nn.relu(layer_1)
+        layer_1 = tf.nn.softmax(layer_1)
         # Hidden layer with RELU activation
         #layer_2 = tf.add(tf.matmul(layer_1, weights['h2']), biases['b2'])
         #layer_2 = tf.nn.relu(layer_2)
@@ -79,16 +83,12 @@ if __name__ == "__main__":
         dataElements[10] = dataElements[10]/max10
         dataElements[11] = dataElements[11]/max11
 
+    #Create Train and Test Data
+    testInput = data[:TEST_SIZE,:FEATURES]
+    testOutput = data[:TEST_SIZE, -OUTPUTS:]
 
-    trainInput = data[:, np.r_[0:28]]
-    trainOutput = data[:, np.r_[28:31]]
-    testInput = data[:, np.r_[0:28]]
-    testOutput = data[:, np.r_[28:31]]
-
-    '''print trainInput.shape
-    print trainOutput.shape
-    print testInput.shape
-    print testOutput.shape'''
+    trainInput = data[TEST_SIZE:, :FEATURES]
+    trainOutput = data[TEST_SIZE:, -OUTPUTS:]
 
     train_size = len(trainInput)
 
