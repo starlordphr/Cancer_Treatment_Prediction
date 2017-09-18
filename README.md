@@ -1,4 +1,4 @@
-# CS239 - AI and Health Informatics Project
+# AI and Health Informatics Project
 
 ## Authors:
 * Prashant
