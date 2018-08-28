@@ -1,9 +1,5 @@
 # AI and Health Informatics Project
 
-## Authors:
-* Prashant
-* Ruchi
-
 ## Proposal:
 Cancer Treatment Prediction on clinical and genomic data.
 
